@@ -26,8 +26,7 @@ class baekjoon_1932 {
     int ans = 0;
     if (N == 1) {
       ans = input[0][0];
-    }
-    else {
+    } else {
       for (int i = 1; i < N; i++) {
         for (int j = 0; j < i + 1; j++) {
           // case: 맨앞에 있는 경우, front j, j+1
