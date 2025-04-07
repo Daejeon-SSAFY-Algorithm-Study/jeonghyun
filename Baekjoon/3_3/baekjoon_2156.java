@@ -11,20 +11,23 @@ public class baekjoon_2156 {
     N = Integer.parseInt(br.readLine());
     wines = new int[N + 1];
 
-    StringTokenizer st = new StringTokenizer(br.readLine());
     for (int i = 1; i <= N; i++) {
-      wines[i] = Integer.parseInt(st.nextToken());
+      wines[i] = Integer.parseInt(br.readLine());
     }
 
     int[] dp = new int[N + 1];
 
-    if (N <= 2) {
+    // Handle edge cases
+    if (N >= 1)
+      dp[1] = wines[1];
+    if (N >= 2)
+      dp[2] = wines[1] + wines[2];
 
-    } else {
-
+    for (int i = 3; i <= N; i++) {
+      dp[i] = Math.max(dp[i - 1], Math.max(dp[i - 2] + wines[i], dp[i - 3] + wines[i - 1] + wines[i]));
     }
 
-    System.out.println();
+    System.out.println(dp[N]);
 
     br.close();
   }
